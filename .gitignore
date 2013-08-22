@@ -1,0 +1,4 @@
+debian/files
+debian/in-chroot.debhelper.log
+debian/in-chroot.substvars
+debian/in-chroot/
