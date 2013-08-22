@@ -1,0 +1,14 @@
+Source: in-chroot
+Section: devel
+Priority: extra
+Maintainer: Alex Young <alex@blackkettle.org>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Homepage: https://github.com/regularfry/in-chroot.git
+
+Package: in-chroot
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Simple script to launch chroot jails.
+ Simple script to launch chroot jails when working with debootstrapped
+ filesystems.  Must run as root.

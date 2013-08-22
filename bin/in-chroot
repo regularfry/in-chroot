@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ -z "${1:-}" ];
+then
+    echo "usage: ${0} <fsroot>"
+    exit 1
+fi
+
+FSROOT=${1}
+shift
+
+mount proc ${FSROOT}/proc -t proc
+mount /dev/pts ${FSROOT}/dev/pts -t devpts
+mount /sys ${FSROOT}/sys -t sysfs
+
+cp /etc/resolv.conf ${FSROOT}/etc/resolv.conf
+
+chroot ${FSROOT} "${@:-/bin/bash}"
+
+EXITCODE=$?
+
+umount ${FSROOT}/proc
+umount ${FSROOT}/dev/pts
+umount ${FSROOT}/sys
+
+exit $EXITCODE
